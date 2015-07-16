@@ -1,6 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope,Lists) {
+
+$scope.lists = Lists.all();
+    $scope.remove = function(chat) {
+    Lists.remove(list);
+  }
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -12,13 +18,16 @@ angular.module('starter.controllers', [])
   //});
   
   $scope.chats = Chats.all();
+         
   $scope.remove = function(chat) {
     Chats.remove(chat);
   }
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams,Chats,Lists) {
   $scope.chat = Chats.get($stateParams.chatId);
+  $scope.list = Lists.get($stateParams.listId);
+
 })
 
 .controller('AccountCtrl', function($scope) {

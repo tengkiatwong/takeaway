@@ -1,5 +1,45 @@
 angular.module('starter.services', [])
 
+.factory('Lists', function(){
+
+    var lists = [{
+        id:1,
+        name: 'Justin Wong',
+        location: 'Somerset 313 food court',
+        end: '1.00pm',
+        deliverBy: '1.20pm',
+        premium: '$2',
+        profilePic:'img/Justin.png'
+    },{
+        id:2,
+        name: 'Benjamin Ong',
+        location: 'One North',
+        end:'12.30pm',
+        deliverBy: '1.00pm',
+        premium: '$4',
+        profilePic: 'img/ben.jpg'
+    }];
+    
+    return {
+    all: function() {
+      return lists;
+    },
+    remove: function(list) {
+      chats.splice(lists.indexOf(list), 1);
+    },
+    get: function(listId) {
+      for (var i = 0; i < lists.length; i++) {
+        if (lists[i].id === parseInt(listId)) {
+          return lists[i];
+        }
+      }
+      return null;
+    }
+  };
+
+
+})
+
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
@@ -48,3 +88,6 @@ angular.module('starter.services', [])
     }
   };
 });
+
+
+
