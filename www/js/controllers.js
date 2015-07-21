@@ -8,29 +8,34 @@ $scope.lists = Lists.all();
   }
 })
 
-.controller('ChatsCtrl', function($scope,Lists) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  
-    $scope.lists = Lists.all();
+.controller('ChatsCtrl', function($scope,Lists,chatMessages) {
     
+    $scope.lastMessage = chatMessages;
+    console.log(($scope.lastMessage));
+    
+    $scope.lists = Lists.all();
     $scope.remove = function(list){
         Lists.remove(list);
     }
     
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams,Lists) {
-  $scope.list = Lists.get($stateParams.listId);
-
+.controller('ChatDetailCtrl', function($scope, $stateParams,Lists,chatMessages) {
+    $scope.list = Lists.get($stateParams.listId);
+    //set scope.messages to chatMessages factory which returns firebase data
+    $scope.messages = chatMessages;
+    //initialize message object
+    $scope.message = {};
+    //add new message to firebase
+    $scope.addMessage = function(message){
+        $scope.messages.$add({content: message});
+        //reset text input field to empty string
+        $scope.message.theMessage = "";
+    };
 })
 
 .controller('AccountCtrl', function($scope) {
     $scope.premium=2
-});
+})
+
+

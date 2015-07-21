@@ -82,7 +82,20 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+})
+
+.factory('chatMessages',['$firebase','$rootScope',function($firebase,$rootScope){
+    //create a reference to the firebase where we are going to store our data
+    var ref = new Firebase("https://blazing-fire-7409.firebaseio.com");
+    
+    var reflast = ref.limitToLast(1);
+    
+    //this uses angularFire to create the synchronized array
+    //limit results to 10
+    return $firebase(ref.limitToLast(10)).$asArray();
+}])
+
+
 
 
 
