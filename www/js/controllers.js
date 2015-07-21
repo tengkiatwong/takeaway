@@ -8,7 +8,7 @@ $scope.lists = Lists.all();
   }
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('ChatsCtrl', function($scope,Lists) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -16,22 +16,21 @@ $scope.lists = Lists.all();
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+
   
-  $scope.chats = Chats.all();
-         
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  }
+    $scope.lists = Lists.all();
+    
+    $scope.remove = function(list){
+        Lists.remove(list);
+    }
+    
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams,Chats,Lists) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ChatDetailCtrl', function($scope, $stateParams,Lists) {
   $scope.list = Lists.get($stateParams.listId);
 
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+    $scope.premium=2
 });

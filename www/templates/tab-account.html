@@ -1,9 +1,51 @@
-<ion-view view-title="Account">
+<ion-view view-title="Broadcast">
   <ion-content>
+      
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
+    <ion-toggle  ng-model="settings.enableBroadcast">
+        On Air
     </ion-toggle>
     </ion-list>
+      
+      <label class="item item-input">
+        <span class="input-label">Location</span>
+        <input type="text" placeholder="where i'm dining at"> 
+      </label>
+      
+      
+     <div class="item item-divider">My return point</div>
+    <ion-radio ng-value="Workplace">
+        <b>Workplace</b>
+        <p>The Hub Singapore @Somerset</p>    
+      </ion-radio>
+    <ion-radio ng-value="Home">
+        <b>Home</b>
+        <p>12 takeaway rd</p>
+      </ion-radio>
+      
+    <div class="item item-divider">Premium</div>
+    <div class="item range range-positive">
+        <span class="input-label" style="font-size:2em;width:2em"><b>${{ premium }}</b></span>
+        <i class="ion-android-contacts"></i>
+        <input ng-model="premium" type="range" name="premium" min="0" max="10" value="4">
+        <i class="ion-social-usd"></i>
+      </div>
+      
+    
+    <div class="item item-divider">Time</div>  
+    <label class="item item-input">
+        <span class="input-label">Last Order</span>
+        <input style="font-size:1.5em" type="text" placeholder="e.g 1400">
+        <input type="tel">
+      </label>
+      
+    <label class="item item-input">
+        <span class="input-label">Deliver by</span>
+        <input style="font-size:1.5em" type="text" placeholder="e.g 1430">
+        <input type="tel">
+      </label>
+      
+      
+      
   </ion-content>
 </ion-view>
