@@ -25,7 +25,7 @@ angular.module('starter.services', [])
       return lists;
     },
     remove: function(list) {
-      chats.splice(lists.indexOf(list), 1);
+      lists.splice(lists.indexOf(list), 1);
     },
     get: function(listId) {
       for (var i = 0; i < lists.length; i++) {
@@ -88,12 +88,16 @@ angular.module('starter.services', [])
     //create a reference to the firebase where we are going to store our data
     var ref = new Firebase("https://blazing-fire-7409.firebaseio.com");
     
-    var reflast = ref.limitToLast(1);
-    
     //this uses angularFire to create the synchronized array
     //limit results to 10
     return $firebase(ref.limitToLast(10)).$asArray();
 }])
+
+.factory('sellerList',['$firebase','$rootScope',function($firebase,$rootScope){
+    //create a reference to the firebase we are going to store out data
+    var ref = new Firebase("")
+}])
+
 
 
 

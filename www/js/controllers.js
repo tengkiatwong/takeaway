@@ -1,11 +1,16 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,Lists) {
+.controller('DashCtrl', function($scope,$http,Lists) {
 
-$scope.lists = Lists.all();
-    $scope.remove = function(chat) {
-    Lists.remove(list);
-  }
+    $scope.lists = Lists.all();
+        $scope.remove = function(chat) {
+        Lists.remove(list);
+      }
+        
+    $scope.doRefresh = function(){
+        $state.go($state.current,{},{reload: true})
+        
+    }
 })
 
 .controller('ChatsCtrl', function($scope,Lists,chatMessages) {
@@ -36,6 +41,8 @@ $scope.lists = Lists.all();
 
 .controller('AccountCtrl', function($scope) {
     $scope.premium=2
+    $scope.enableBroadcast = false;
+    
 })
 
 
